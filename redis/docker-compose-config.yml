@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:5.0.7
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - ./persistence/data:/data
+      - ./persistence/conf/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+    command:
+      redis-server /usr/local/etc/redis/redis.conf
