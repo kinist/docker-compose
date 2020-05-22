@@ -1,0 +1,26 @@
+version: "3"
+services: 
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: unless-stopped
+    environment: 
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=password
+    ports: 
+      - 3306:3306
+    volumes: 
+      - mysql-data:/var/lib/mysql
+      - mysql-etc:/etc/mysql/conf.d
+
+  adminer:
+    image: adminer:4.7
+    container_name: adminer
+    restart: unless-stopped
+    ports: 
+      - 8080:8080
+      - 9000:9000
+  
+volumes: 
+  mysql-data:
+  mysql-etc:
