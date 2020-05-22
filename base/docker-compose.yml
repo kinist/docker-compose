@@ -1,0 +1,23 @@
+version: '3'
+services:
+  service-name:
+    image: 
+    container_name: 
+    user: 
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+    volumes:
+      - ./persistence/tmp:/tmp
+      - service-name-logs:/var/log
+
+networks:
+  default:
+    name: mysql_5.6
+
+volumes:
+  service-name-logs
