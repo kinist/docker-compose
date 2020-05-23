@@ -1,11 +1,9 @@
 # MySQL docker-compose 用法
 
-1. 目录default: 以MySQL 5.7举例的默认版本，数据目录直接使用volume模式。内带PHP版本的adminer，直接使用MySQL的services name访问，即：db。
+1. 目录default: 以MySQL 5.7举例的默认版本，数据目录直接使用volume模式。内带PHP版本的adminer，已使用links特性，所以在adminer中服务器可直接使用db访问。
 2. 目录5.6: MySQL5.6版本的docker-compose文件
 3. 目录5.7: MySQL5.7版本的docker-compose文件
-4. 在同一主机上同时部署 MySQL 5.6 和 MySQL 5.7 版本
-   + 方案一：使用不同目录部署，如：mysql-5.6 和 mysql-5.7
-   + 方案二：使用不同的networks，如：
+4. 在同一主机上同时部署 MySQL 5.6 和 MySQL 5.7 版本，两个app不能使用相同目录部署，如：mysql-5.6 和 mysql-5.7 分开部署。另外可使用不同的networks，如：
 
 ```docker-compose
 networks:
@@ -24,6 +22,7 @@ networks:
 ```
 
 5. 非default模式下，persistence目录下面三个文件夹需要预先建好
+
 6. 非default模式下，如果使用root启动，docker-compose.yml中 `user` 那行需要注释掉，且需要将persistence目录下的所有文件宿主改为 `999:999`
 
 ```Linux
