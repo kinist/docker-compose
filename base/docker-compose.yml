@@ -1,23 +1,38 @@
 version: '3'
 services:
   service-name:
-    image: 
-    container_name: 
-    user: 
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
+      args:
+        buildno: 1
+      labels:
+        - "com.example.description=Accounting webapp"
+        - "com.example.department=Finance"
+        - "com.example.label-with-empty-value"
+      target: prod
+    image: ubuntu:16.04
+    container_name: services
+    user: 999:999
     restart: unless-stopped
+    depends_on:
+      - db
+      - redis
     environment:
       - TZ=Asia/Shanghai
+#    network_mode: host
     ports:
       - "3306:3306"
     networks:
-      - default
+      - network_name
     volumes:
       - ./persistence/tmp:/tmp
-      - service-name-logs:/var/log
+      - volumes_name:/var/log
+#    command: --allow-http --password=P@ssw0rd123
+    command: redis-server /usr/local/etc/redis/redis.conf
 
 networks:
-  default:
-    name: mysql_5.6
+  network_name:
 
 volumes:
-  service-name-logs
+  volumes_name:
