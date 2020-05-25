@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab-ce
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+    ports:
+      - "9080:9080"
+      - "2224:22"
+    volumes:
+      - ./persistence/gitlab/config:/etc/gitlab
+      - ./persistence/gitlab/logs:/var/log/gitlab
+      - ./persistence/gitlab/data:/var/opt/gitlab
