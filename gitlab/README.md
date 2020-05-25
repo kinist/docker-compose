@@ -81,7 +81,7 @@ gitlab_rails['gitlab_shell_ssh_port'] = 2224
 # gitlab-ctl tail <service name>  //查看服务的日志
 
 // nginx：静态Web服务器
-// gitlab-shell：用于处理Git命令和修改authorized keys列表，我们的gitlab是以Git做为最层的，你操作实际上最后就是调用gitlab-shell命令进行处理。
+// gitlab-shell：用于处理Git命令和修改authorized keys列表，GitLab是以Git做为最层的，操作实际就是调用gitlab-shell命令进行处理。
 // gitlab-workhorse:轻量级的反向代理服务器
 // logrotate：日志文件管理工具
 // postgresql：数据库
