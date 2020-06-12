@@ -23,6 +23,7 @@ services:
 #    network_mode: host
     ports:
       - "3306:3306"
+    hostname: rabbit1
     networks:
       - network_name
     volumes:
