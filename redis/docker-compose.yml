@@ -8,6 +8,8 @@ services:
       - redis-data:/data
     ports: 
       - 6379:6379
+    command:
+      redis-server --requirepass 111111
 
 volumes: 
   redis-data:
