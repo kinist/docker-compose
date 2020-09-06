@@ -9,5 +9,8 @@ services:
     ports:
       - "8080:8080"
       - "50000:50000"
+#    network_mode: host
     volumes:
       - ./persistence/jenkins/home:/var/jenkins_home
+      - ./persistence/jenkins/tools:/opt/tools
+      
