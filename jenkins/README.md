@@ -6,4 +6,4 @@
 - “slave/agent”目录下为Slave节点启动脚本，注意下载agent.jar文件及修改slave.sh的部分变量，如：SECRET_KEY、WORK_DIR、JNLP_URL
 
 
-Read [documentation](https://github.com/jenkinsci/docker/blob/master/README.md) for usage
+Read [documentation](https://github.com/jenkinsci/docker/blob/master/README.md) for Jenkins usage
