@@ -6,9 +6,13 @@ services:
     restart: unless-stopped
     environment:
       TZ: Asia/Shanghai
+#      JENKINS_OPTS: "--httpPort=-1 --httpsPort=8443 --httpsCertificate=/etc/jenkins/cert.pem --httpsPrivateKey=/etc/jenkins/key.pem"
 #    network_mode: host
     ports:
       - "8080:8080"
+#      - "8443:8443"
       - "50000:50000"
     volumes:
       - ./persistence/jenkins/home:/var/jenkins_home
+#      - ./persistence/jenkins/openssl:/etc/jenkins
+
