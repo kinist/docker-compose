@@ -1,0 +1,14 @@
+version: '3'
+services: 
+  squid:
+    image: sameersbn/squid:latest
+    container_name: squid_server
+    restart: unless-stopped
+    ports: 
+      - 3128:3128
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./persistence/cache:/var/spool/squid
+      - ./persistence/config/squid.conf:/etc/squid/squid.conf
+      - ./persistence/logs:/var/log/squid
