@@ -1,0 +1,38 @@
+version: '3'
+services:
+  tracker:
+    image: fastdfs-nginx:6.06
+    container_name: fastdfs-tracker
+    command: tracker
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - TRACKER_SERVER=192.168.128.128:22122
+      - PORT=22122
+    volumes:
+      - fdfs-tracker-data:/opt/fastdfs
+      - fdfs-tracker-etc:/etc/fdfs
+
+  storage:
+    image: fastdfs-nginx:6.06
+    container_name: fastdfs-storage
+    depends_on:
+      - tracker
+    command: storage
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - TRACKER_SERVER=192.168.128.128:22122
+      - PORT=23000
+      - GROUP_NAME=group1
+    volumes:
+      - fdfs-storage-data:/opt/fastdfs
+      - fdfs-storage-etc:/etc/fdfs
+
+volumes: 
+  fdfs-tracker-data:
+  fdfs-tracker-etc:
+  fdfs-storage-data:
+  fdfs-storage-etc:

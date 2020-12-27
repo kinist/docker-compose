@@ -1,0 +1,5 @@
+version: '3'
+services:
+  tracker_storage:
+    build: ./dockerfile
+    image: fastdfs-nginx:6.06

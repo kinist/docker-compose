@@ -1,0 +1,8 @@
+rm -f ./persistence/nginx/logs/*
+rm -rf ./persistence/storage/fastdfs/data
+mkdir ./persistence/storage/fastdfs/data
+rm -rf ./persistence/storage/fastdfs/logs/*
+rm -rf ./persistence/tracker/fastdfs/data
+mkdir ./persistence/tracker/fastdfs/data
+rm -rf ./persistence/tracker/fastdfs/logs/*
+
