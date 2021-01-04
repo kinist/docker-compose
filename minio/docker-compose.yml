@@ -1,0 +1,16 @@
+version: '3'
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    user: 1000:1000
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
+      - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./persistence/minio/data:/data
+    command: server /data
