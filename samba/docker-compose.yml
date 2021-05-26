@@ -1,0 +1,26 @@
+version: "3.4"
+services:
+  samba:
+    image: dperson/samba
+    container_name: samba
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - default
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./persistence/share:/share
+    command: '-u "myadmin;password" -s "hiddenshared$$;/share;no;no;no;myadmin;myadmin" -s "writeable;/share/writeable;yes;no;yes" -s "readable;/share/readable;yes;yes;yes" -g "create mask = 0644" -g "force create mode = 0644" -g "directory mask = 0755" -g "force directory mode = 0755" -g "force user = root" -g "force group = root" -W -r'
+
+networks:
+  default:
