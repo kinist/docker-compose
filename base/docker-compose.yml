@@ -21,6 +21,7 @@ services:
       - redis
     environment:
       - TZ=Asia/Shanghai
+    working_dir: /usr/local/tomcat
 #    network_mode: host
     ports:
       - "3306:3306"
